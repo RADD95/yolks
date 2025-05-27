@@ -14,12 +14,12 @@ RUN apk update && apk add --no-cache \
     ffmpeg \
     iproute2 \
     git \
-    sqlite3 \
-    libsqlite3-dev \
+    sqlite \
+    sqlite-dev \
     python3 \
     python3-dev \
     ca-certificates \
-    dnsutils \
+    bind-tools \
     tzdata \
     zip \
     tar \
@@ -27,7 +27,7 @@ RUN apk update && apk add --no-cache \
     build-base \
     libtool \
     iputils \
-    libnss3 \
+    nss \
     tini
 
 # Nota: Node 10 incluye npm por defecto, no es necesario actualizar npm ni instalar TypeScript si no lo usas.
