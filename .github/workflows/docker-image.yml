@@ -51,4 +51,4 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/yolks:nodejs_10_arm64
+            ghcr.io/${{ github.repository_owner | downcase }}/yolks:nodejs_10_arm64
