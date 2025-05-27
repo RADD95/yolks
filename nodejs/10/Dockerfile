@@ -1,11 +1,12 @@
-FROM --platform=$TARGETOS/$TARGETARCH arm64v8/node:10-alpine
+FROM --platform=$TARGETOS/$TARGETARCH node:10-stretch
 
-LABEL author="Michael Parker" maintainer="parker@pterodactyl.io"
+LABEL author="RADD95" maintainer="radd95@example.com"
 
-# add container user and set stop signal
+# Agregar usuario y configurar la señal de detención
 RUN useradd -m -d /home/container container
 STOPSIGNAL SIGINT
 
+# Instalar dependencias necesarias
 RUN apt update \
     && apt -y install \
         ffmpeg \
@@ -28,13 +29,15 @@ RUN apt update \
         tini
 
 # Nota: Node 10 incluye npm por defecto, no es necesario actualizar npm ni instalar TypeScript si no lo usas.
-# Si necesitas alguna versión de npm o typescript compatible, puedes instalar aquí.
 
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-COPY --chown=container:container ./../entrypoint.sh /entrypoint.sh
+# Copiar entrypoint.sh desde el repositorio
+COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+# Establecer el entrypoint
 ENTRYPOINT ["/usr/bin/tini", "-g", "--"]
 CMD ["/entrypoint.sh"]
