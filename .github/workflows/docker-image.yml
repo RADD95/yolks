@@ -46,7 +46,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
-          context: ./nodejs/10
+          context: ./nodejs
           file: ./nodejs/10/Dockerfile  # Ruta del Dockerfile para Node.js 10
           platforms: linux/arm64
           push: true
