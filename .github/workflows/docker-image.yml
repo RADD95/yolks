@@ -51,4 +51,4 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: |
-            ghcr.io/radd95/yolks:nodejs_10_arm64  # Aquí usamos "radd95" en minúsculas
+            ghcr.io/radd95/yolks:nodejs_10_arm64
