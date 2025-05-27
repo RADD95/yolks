@@ -40,7 +40,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.REGISTRY_TOKEN }} # Asegúrate de haber creado este secreto
+          password: ${{ secrets.REGISTRY_TOKEN }}  # Usar el token almacenado en los secretos
 
       # Construcción y envío de la imagen Docker para Node.js 10 ARM64
       - name: Build and Push Docker Image
