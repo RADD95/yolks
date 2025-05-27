@@ -3,8 +3,8 @@ FROM --platform=$TARGETOS/$TARGETARCH arm64v8/node:10-alpine
 LABEL author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 # add container user and set stop signal
-RUN useradd -m -d /home/container container
-STOPSIGNAL SIGINT
+RUN         useradd -m -d /home/container container
+STOPSIGNAL  SIGINT
 
 RUN apt update \
     && apt -y install \
