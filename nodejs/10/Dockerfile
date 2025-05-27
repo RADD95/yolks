@@ -30,14 +30,11 @@ RUN apt update \
 
 # Nota: Node 10 incluye npm por defecto, no es necesario actualizar npm ni instalar TypeScript si no lo usas.
 
-USER container
-ENV USER=container HOME=/home/container
-WORKDIR /home/container
+USER        container
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
 
-# Copiar entrypoint.sh desde el repositorio
-COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-# Establecer el entrypoint
-ENTRYPOINT ["/usr/bin/tini", "-g", "--"]
-CMD ["/entrypoint.sh"]
+COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]
